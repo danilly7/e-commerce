@@ -17,8 +17,6 @@ var total = 0;
 console.log("array products:", products);
 
 const buscarProducts = (valor) => products.findIndex(products => products.id === valor);
-//console.log("prueba en array products, buscando id 3 muestra posición:", buscarProducts(3));
-
 const buscarCart = (valor) => cart.findIndex(cart => cart.id === valor);
 
 function buy(id) {
@@ -41,18 +39,24 @@ function buy(id) {
         }
     }
 }
+
 console.log("Updated cart:", cart);
 console.table(cart);
-//console.log("prueba en array cart, buscando id 7 que no está añadido:", buscarCart(7));
 
 // Exercise 2
 function cleanCart() {
-
+    cart.splice(0, cart.length);
 }
+
+console.log("Antes del clean:", cart);
+cleanCart();
+console.log("Después del clean:", cart);
 
 // Exercise 3
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
+
+
 }
 
 // Exercise 4
