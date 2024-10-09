@@ -30,27 +30,22 @@ function buy(id) {
         if (positionCart < 0) {
             newItem = products[positionProducts];
             newItem.quantity = 1;
-            console.log("new item que se añadirá al cart:", newItem);
-
+            
             cart.push(newItem);
         } else {
             cart[positionCart].quantity += 1;
-            console.log("item id que sumará quantity:", cart[positionCart].id);
         }
     }
 }
 
 console.log("Updated cart:", cart);
-console.table(cart);
 
 //---------------------------------------------------------------------------------------------------------------------------------- Exercise 2
 function cleanCart() {
     cart.splice(0, cart.length);
 }
 
-console.log("Antes del clean:", cart);
 cleanCart();
-console.log("Después del clean:", cart);
 
 //---------------------------------------------------------------------------------------------------------------------------------- Exercise 3
 function calculateTotal() {
@@ -64,18 +59,47 @@ function calculateTotal() {
         quantityItem = cart[i].quantity;
         priceItem = cart[i].price;
         total += (quantityItem * priceItem);
-        console.log("Total:", total); 
+        console.log("Subtotal:", total);
     }
+
+    return total;
 }
 
 calculateTotal();
 
 //---------------------------------------------------------------------------------------------------------------------------------- Exercise 4
+
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+
+    let offerOil = 0.80;
+    let offerCupcake = 0.70;
+    let discounted = false;
+
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === 1 && cart[i].quantity >= 3) {
+            cart[i].price *= offerOil;
+            discounted = true;
+        } else if (cart[i].id === 3 && cart[i].quantity >= 10) {
+            cart[i].price *= offerCupcake;
+            discounted = true;
+        }
+    }
+    return discounted;
 }
 
-// Exercise 5
+let subtotalWithDiscount = 0;
+let discountApplied = applyPromotionsCart();
+console.log("Was discounted applied?", discountApplied);
+
+if (discountApplied === true) {
+    subtotalWithDiscount = calculateTotal();
+    console.log("Total with discounts applied:", subtotalWithDiscount);
+} else {
+    console.log("Total with NO discounts applied:", calculateTotal());
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------- Exercise 5
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
 }
