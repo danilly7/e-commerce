@@ -10,7 +10,7 @@ var cart = [];
 
 var total = 0;
 
-// Exercise 1
+//---------------------------------------------------------------------------------------------------------------------------------- Exercise 1
 // 1. Loop for to the array products to get the item to add to cart
 // 2. Add found product to the cart array
 
@@ -43,7 +43,7 @@ function buy(id) {
 console.log("Updated cart:", cart);
 console.table(cart);
 
-// Exercise 2
+//---------------------------------------------------------------------------------------------------------------------------------- Exercise 2
 function cleanCart() {
     cart.splice(0, cart.length);
 }
@@ -52,14 +52,25 @@ console.log("Antes del clean:", cart);
 cleanCart();
 console.log("Después del clean:", cart);
 
-// Exercise 3
+//---------------------------------------------------------------------------------------------------------------------------------- Exercise 3
 function calculateTotal() {
-    // Calculate total price of the cart using the "cartList" array
+    // Calculate total price of the cart using the "cartList" array, bucle.
 
+    let total = 0;
+    let quantityItem = 0;
+    let priceItem = 0
 
+    for (let i = 0; i < cart.length; i++) {
+        quantityItem = cart[i].quantity;
+        priceItem = cart[i].price;
+        total += (quantityItem * priceItem);
+        console.log("Total:", total); 
+    }
 }
 
-// Exercise 4
+calculateTotal();
+
+//---------------------------------------------------------------------------------------------------------------------------------- Exercise 4
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
 }
