@@ -52,8 +52,13 @@ function calculateTotal() {
         subtotalItem = cart[i].subtotal;
         subtotal += subtotalItem;
     }
+
+    console.log("subtotal:", subtotal);
     return subtotal;
 }
+
+calculateTotal();
+console.table(cart);
 
 //---------------------------------------------------------------------------------------------------------------------------------- Exercise 4
 // Apply promotions to each item in the array "cart"
@@ -72,7 +77,6 @@ function applyPromotionsCart() {
             discounted = true;
         } else {
             cart[i].discount = 1;
-            discounted = false;
         }
     }
     return discounted;
@@ -94,8 +98,11 @@ function calculateFinalTotal() {
     return total;
 }
 
+calculateFinalTotal();
+
 if (discountApplied === true) {
     subtotalWithDiscount = calculateFinalTotal();
+    console.table(cart);
     console.log("Total with discounts applied:", subtotalWithDiscount);
 } else {
     console.log("Total with NO discounts applied:", calculateTotal());
@@ -133,7 +140,31 @@ function printCart() {
 //-------------------------------------------------------- ** Nivell II ** --------------------------------------------------------- Exercise 7
 
 function removeFromCart(id) {
+    let positionCart = buscarCart(id);
 
+    if (positionCart < 0) {
+        alert("Error: this product is not in the cart.");
+        return;
+    }
+
+    if (cart[positionCart].quantity > 1) {
+        cart[positionCart].quantity -= 1;
+    } else if (cart[positionCart].quantity === 1) {
+        cart.splice(positionCart, 1);
+    }
+
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === 1 && cart[i].quantity < 3) {
+            cart[i].discount = 1;
+        } else if (cart[i].id === 3 && cart[i].quantity < 10) {
+            cart[i].discount = 1;
+            discounted = true;
+        }
+    }
+
+    calculateTotal();
+    calculateFinalTotal();
+    console.table(cart);
 }
 
 function open_modal() {
