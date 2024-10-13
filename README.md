@@ -4,7 +4,7 @@
 Este proyecto es una demo de una aplicación web para una empresa del sector e-commerce. Está compuesta por un carrito de compra que permite a los usuarios añadir productos, modificar las cantidades de los productos seleccionados y eliminar productos. Además, el carrito aplica promociones automáticas basadas en la cantidad de productos seleccionados. También incluye un formulario de checkout donde los usuarios pueden ingresar sus datos antes de finalizar la compra.
 
 
-![image](https://github.com/user-attachments/assets/8a3151e2-a347-485f-8802-b8733250d554)
+![image](https://github.com/user-attachments/assets/d6baaf8b-c638-45f6-9c13-adc7e006e80c)
 
 ![image](https://github.com/user-attachments/assets/73702d2f-19a5-4df5-961a-13beb3ce13e2)
 
