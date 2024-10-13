@@ -21,29 +21,30 @@ function buy(id) {
     let newItem = 0;
 
     if (positionProducts < 0) {
-        alert("Error: this product is not in our list of products.")
+        return;
     } else {
         if (positionCart < 0) {
             newItem = products[positionProducts];
             newItem.quantity = 1;
-
             cart.push(newItem);
         } else {
             cart[positionCart].quantity += 1;
         }
     }
+    printCart();
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------- Exercise 2
 
 function cleanCart() {
     cart.splice(0, cart.length);
+    printCart();
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------- Exercise 3
 // Calculate total price of the cart using the "cartList" array, bucle.
 
-function calculateTotal() {
+function calculateSubtotal() { //MODIFICADO NOMBRE DE CALCULATETOTAL A CALCULATESUBTOTAL.
     let subtotalItem = 0;
     let subtotal = 0;
 
@@ -56,9 +57,6 @@ function calculateTotal() {
     console.log("subtotal:", subtotal);
     return subtotal;
 }
-
-calculateTotal();
-console.table(cart);
 
 //---------------------------------------------------------------------------------------------------------------------------------- Exercise 4
 // Apply promotions to each item in the array "cart"
@@ -82,11 +80,12 @@ function applyPromotionsCart() {
     return discounted;
 }
 
-let subtotalWithDiscount = 0;
-let discountApplied = applyPromotionsCart();
-console.log("Are discounts being applied?", discountApplied);
-
 function calculateFinalTotal() {
+    calculateSubtotal();
+
+    let discountApplied = applyPromotionsCart();
+    console.log("Are discounts being applied?", discountApplied);
+
     let totalItem = 0;
     let total = 0;
 
@@ -95,28 +94,32 @@ function calculateFinalTotal() {
         totalItem = cart[i].total;
         total += totalItem;
     }
+
+    if (discountApplied === true) {
+        console.log("Total with discounts applied:", total);
+    } else {
+        console.log("Total with NO discounts applied:", total);
+    }
+
     return total;
-}
-
-calculateFinalTotal();
-
-if (discountApplied === true) {
-    subtotalWithDiscount = calculateFinalTotal();
-    console.table(cart);
-    console.log("Total with discounts applied:", subtotalWithDiscount);
-} else {
-    console.log("Total with NO discounts applied:", calculateTotal());
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------- Exercise 5
 // Fill the shopping cart modal manipulating the shopping cart dom
 
 function printCart() {
+    let countProduct = document.getElementById("count_product");
+    let count = 0;
+    for (let z = 0; z < cart.length; z++) {
+        count += cart[z].quantity;
+    }
+    countProduct.innerHTML = count;
+
     let cartList = document.getElementById("cart_list");
     cartList.innerHTML = "";
 
     let totalPrice = document.getElementById("total_price");
-    totalPrice.innerHTML = 0;
+    totalPrice.innerHTML = calculateFinalTotal();
 
     for (let i = 0; i < cart.length; i++) {
         let row = `
@@ -125,15 +128,11 @@ function printCart() {
                 <td>$${cart[i].price}</td>
                 <td>${cart[i].quantity}</td>
                 <td>$${cart[i].total}</td>
+                <td><button onclick="removeFromCart(${cart[i].id})" class="btn btn-primary btn-sm">-</button></td>
+                <td><button onclick="buy(${cart[i].id})" class="btn btn-primary btn-sm">+</button></td>
             </tr>
         `;
         cartList.innerHTML += row;
-    }
-
-    if (discountApplied === true) {
-        totalPrice.innerHTML = subtotalWithDiscount;
-    } else {
-        totalPrice.innerHTML = calculateTotal();
     }
 }
 
@@ -141,9 +140,8 @@ function printCart() {
 
 function removeFromCart(id) {
     let positionCart = buscarCart(id);
-
+    
     if (positionCart < 0) {
-        alert("Error: this product is not in the cart.");
         return;
     }
 
@@ -158,13 +156,11 @@ function removeFromCart(id) {
             cart[i].discount = 1;
         } else if (cart[i].id === 3 && cart[i].quantity < 10) {
             cart[i].discount = 1;
-            discounted = true;
         }
     }
 
-    calculateTotal();
     calculateFinalTotal();
-    console.table(cart);
+    printCart();
 }
 
 function open_modal() {
