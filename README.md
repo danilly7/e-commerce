@@ -1,4 +1,4 @@
-# SPRING 2. JAVASCRIPT - S2.2. E-commerce
+# SPRINT 2. JAVASCRIPT - S2.2. E-commerce
 ## Descripción del proyecto: 
 
 Este proyecto es una demo de una aplicación web para una empresa del sector e-commerce. Está compuesta por un carrito de compra que permite a los usuarios añadir productos, modificar las cantidades de los productos seleccionados y eliminar productos. Además, el carrito aplica promociones automáticas basadas en la cantidad de productos seleccionados. También incluye un formulario de checkout donde los usuarios pueden ingresar sus datos antes de finalizar la compra.
