@@ -1,4 +1,4 @@
-# SPRINT 2. JAVASCRIPT - S2.2. E-commerce
+# JAVASCRIPT - E-commerce
 ## Descripción del proyecto: 
 
 Este proyecto es una demo de una aplicación web para una empresa del sector e-commerce. Está compuesta por un carrito de compra que permite a los usuarios añadir productos, modificar las cantidades de los productos seleccionados y eliminar productos. Además, el carrito aplica promociones automáticas basadas en la cantidad de productos seleccionados. También incluye un formulario de checkout donde los usuarios pueden ingresar sus datos antes de finalizar la compra.
@@ -34,13 +34,13 @@ Para instalar este proyecto localmente:
 1. Clona el repositorio:
 
    ```bash
-   git clone https://github.com/danilly7/s2.2.E-commerce.git
+   git clone https://github.com/danilly7/e-commerce.git
    ``` 
    
 2. Navega a la carpeta del proyecto:
 
    ```bash
-   cd s2.2.E-commerce
+   cd e-commerce
    ```
 
 3. Abrir el archivo HTML `index.html` y visualizar el proyecto en el navegador de preferencia.
